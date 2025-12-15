@@ -1,379 +1,174 @@
-# Stock Market Chatbot - Modular Python Project
+# 📘 Modular Stock Market Chatbot (Prolog Version)
 
-A modular, educational chatbot that explains stock market concepts using Python namespaces, scope management, and clean module separation. Features intent detection, natural language processing, and persistent memory capabilities.
+A fully modular, educational Stock Market chatbot implemented in SWI-Prolog, designed to demonstrate:
 
----
+- **Modular programming**
+- **Logic programming paradigm**
+- **Intent detection via pattern matching**
+- **Rule-based knowledge representation**
+- **Separation of concerns**
 
-## 🎯 Project Overview
-
-This chatbot demonstrates professional Python software engineering practices including:
-- **Modular architecture** with clear separation of concerns
-- **Intent-based conversation flow** with 20+ supported topics
-- **Memory management** for user context and preferences
-- **Namespace and scope** demonstration for educational purposes
-- **Comprehensive keyword matching** with longest-first algorithm
-
-### Key Features
-
-✅ Explains 20+ stock market concepts (stocks, ETFs, trading, metrics, strategies)  
-✅ Memory system to remember user's name, location, and preferences  
-✅ Intelligent intent detection with extensive keyword coverage  
-✅ Educational focus with guardrails against financial advice  
-✅ Clean modular design following software engineering best practices  
-
----
+This project is ideal for coursework, logic-programming practice, and demonstrating mastery of Prolog.
 
 ## 📁 Project Structure
 
 ```
-python/
-├── main_stock.py                          # Entry point & orchestration
-├── input_processing_first_lastname.py     # Intent detection & keyword matching
-├── response_generator_stockmarket.py      # Response generation
-├── memory_manager.py                      # User context storage
-├── run_keyword_tests.py                   # Automated testing suite
-├── README.md                              # This file
-├── README_MEMORY.md                       # Memory module documentation
-└── UML_and_Reflection_Modular_Chatbot.md  # Architecture & design reflection
+/prolog/prolog
+ ├── main_stock.pl
+ ├── input_processing.pl
+ ├── response_generator.pl
+ ├── memory_manager.pl
+ ├── run_tests.pl
+ └── README.md
 ```
 
----
+### File Descriptions
 
-## 🚀 Quick Start
+| File | Purpose |
+|------|---------|
+| `main_stock.pl` | Entry point. Runs the chatbot loop and handles user interactions. |
+| `input_processing.pl` | Detects the user's intent based on keyword matching. |
+| `response_generator.pl` | Generates appropriate educational stock-market responses. |
+| `memory_manager.pl` | Optional: remembers user's name and location if enabled. |
+| `run_tests.pl` | Optional automated tests (not required). |
 
+## 🚀 Running the Chatbot
 
-### Running the Chatbot
+### Prerequisites
+- SWI-Prolog installed on your system
 
-```powershell
-python main_stock.py
-```
+### Steps
 
-### Sample Interaction
+1. **Navigate to the project directory:**
+   ```bash
+   cd ~/prolog/prolog
+   ```
+
+2. **Start SWI-Prolog:**
+   ```bash
+   swipl
+   ```
+
+3. **Load the main file:**
+   ```prolog
+   ?- [main_stock].
+   ```
+
+4. **Start the chatbot:**
+   ```prolog
+   ?- main_stock:start.
+   ```
+
+## 💬 Example Interaction
 
 ```
 Hi! I'm a modular Stock Market chatbot. Type 'quit' to exit.
 Type 'help' to see what I cover.
 
-You: My name is Alice
-Chatbot: Okay, I'll remember that your name is Alice.
+You: stocks
+Bot: A stock represents ownership in a company...
 
-You: what is a stock?
-Chatbot: A stock is ownership in a company. Shareholders may benefit from price gains and sometimes dividends.
+You: etf
+Bot: An ETF (Exchange-Traded Fund) is...
 
-You: who am i?
-Chatbot: You told me your name is Alice.
+You: what is a dividend
+Bot: A dividend is a payment made by a corporation...
 
-You: tell me about ETFs
-Chatbot: An ETF is a basket of assets you trade like one stock. It offers built-in diversification and usually low fees.
-
-You: help
-Chatbot: I can explain core investing concepts: stock, ETF, index/S&P 500, dividends, market vs limit, stop loss, ticker, bid/ask, market cap, volume, trading hours, P/E, dividend yield, DCA, long vs short, IPO, risk & return, diversification. This is educational only—no real-time data or advice.
+You: market vs limit
+Bot: Market orders execute immediately...
 
 You: quit
-Chatbot: Goodbye! Educational use only—this is not financial advice.
+Goodbye!
 ```
-
----
 
 ## 📚 Supported Topics
 
-### Basic Concepts
-- **Stocks** - Company ownership and shares
-- **ETFs** - Exchange-traded funds
-- **Mutual Funds** - Pooled investment vehicles
-- **Index** - Market indices like S&P 500
-- **Dividends** - Company profit distributions
+The chatbot can explain:
 
-### Trading Mechanics
-- **Market vs Limit Orders** - Order types explained
-- **Stop Loss Orders** - Risk management tools
-- **Ticker Symbols** - Stock identifiers
-- **Bid/Ask Spread** - Price quotes
-- **Trading Hours** - Market timing
+- **Basic Concepts:** stocks, ETFs, mutual funds, indexes
+- **Orders:** market vs limit, stop loss
+- **Metrics:** market cap, P/E ratio, dividend yield, bid/ask
+- **Strategies:** diversification, dollar cost averaging, long vs short
+- **Market Behavior:** what moves prices, bullish vs bearish, IPOs
+- **Trading:** trading hours, ticker symbols
 
-### Financial Metrics
-- **Market Cap** - Company size indicator
-- **Volume** - Trading activity
-- **P/E Ratio** - Price-to-earnings valuation
-- **Dividend Yield** - Income metric
+### Example Keywords
 
-### Investment Strategies
-- **Diversification** - Risk spreading
-- **DCA** - Dollar-cost averaging
-- **Long vs Short** - Position types
-- **Risk/Return** - Investment fundamentals
+- `stocks`
+- `etf`
+- `what is a dividend`
+- `market vs limit`
+- `what moves the price`
+- `explain mutual fund`
+- `what is an ipo`
+- `bullish vs bearish`
+- `what is a ticker symbol`
+- `what does market cap mean`
+- `how do trading hours work`
+- `what is p/e ratio`
+- `what is dividend yield`
+- `what is dollar cost averaging`
+- `long vs short`
 
-### Market Concepts
-- **Bull/Bear Markets** - Market conditions
-- **IPO** - Initial public offerings
-- **Price Movement** - What affects stock prices
-
----
-
-## 🧠 Memory System
-
-The chatbot remembers information about you during the conversation:
-
-### Supported Memory Contexts
-- **Name**: "My name is [name]"
-- **Location**: "I live in [city]"
-
-### Recall Queries
-- "Who am I?" or "What is my name?"
-- "Where do I live?" or "Where am I from?"
-
-### Memory Features
-- Pattern matching with wildcards (e.g., "My name is *")
-- Multiple actions per rule (remember + reply)
-- Context-based storage (name, location, extensible)
-- Session-persistent (memory lasts until program exits)
-
-For detailed memory documentation, see `README_MEMORY.md`.
-
----
-
-## 🏗️ Architecture
-
-### Module Responsibilities
-
-#### `main_stock.py`
-- Entry point and conversation orchestration
-- Integrates all modules
-- Manages session state (turn counter)
-- Demonstrates scope and namespaces
-- Handles memory queries and intent routing
-
-#### `input_processing_first_lastname.py`
-- Normalizes user input
-- Detects intents via keyword matching
-- Longest-first matching algorithm
-- Returns intent + matched keywords
-- Supports 20+ intents
-
-#### `response_generator_stockmarket.py`
-- Maps intents to educational responses
-- Maintains response templates
-- Includes guardrails for safety
-- State-aware response generation
-
-#### `memory_manager.py`
-- In-memory facts storage
-- Rules engine with pattern matching
-- Supports wildcards in patterns
-- Multiple actions per rule
-- Syntax validation and error handling
-
-### Data Flow
+## 🧩 Module Architecture
 
 ```
-User Input
-    ↓
-[Memory Manager] ← Check for memory patterns first
-    ↓ (if not handled)
-[Input Processing] ← Normalize & detect intent
-    ↓
-[Main] ← Update state, coordinate modules
-    ↓
-[Response Generator] ← Generate appropriate response
-    ↓
-Chatbot Output
+main_stock.pl
+ ├── input_processing.pl        (intent detection)
+ ├── response_generator.pl      (answers for each intent)
+ └── memory_manager.pl          (optional memory features)
 ```
 
----
+### How It Works
 
-## 🧪 Testing
+1. **User Input** → `main_stock.pl` captures the input
+2. **Intent Detection** → `input_processing.pl` identifies user intent
+3. **Response Generation** → `response_generator.pl` provides educational answer
+4. **Memory** → `memory_manager.pl` can store context (optional)
+5. **Output** → Response displayed to user
 
-Run the automated keyword test suite:
+## 🛑 How to Exit
 
-```powershell
-python run_keyword_tests.py
+### Inside the chatbot:
+```
+quit
 ```
 
-This tests intent detection across all supported keywords and scenarios.
-
-### Manual Testing
-
-Each module can be run independently:
-
-```powershell
-# Test input processing
-python input_processing_first_lastname.py
-
-# Test response generator
-python response_generator_stockmarket.py
-
-# Test memory manager
-python memory_manager.py
+### Inside Prolog:
+```prolog
+?- halt.
 ```
 
----
+## 🧪 Running Tests (Optional)
 
-## 🔧 Extending the Chatbot
+If you want to test the intent detection:
 
-### Adding a New Intent
-
-1. **Add keywords** in `input_processing_first_lastname.py`:
-```python
-INTENT_KEYWORDS = {
-    # ... existing intents ...
-    "bonds": ["bond", "bonds", "fixed income", "treasury"],
-}
+```prolog
+?- [run_tests].
+?- run_tests.
 ```
 
-2. **Add response** in `response_generator_stockmarket.py`:
-```python
-if intent == "bonds":
-    return "Bonds are debt securities where you loan money to an entity for interest payments."
-```
+## 🛠 Extending the Chatbot
 
-3. **Update help text** in `response_generator_stockmarket.py`:
-```python
-SUPPORTED_KEYWORDS_EXAMPLES = [
-    # ... existing topics ...
-    "bonds",
-]
-```
+### Add New Intents
 
-### Adding a New Memory Context
+1. **In `input_processing.pl`:** Add new keyword patterns
+2. **In `response_generator.pl`:** Add corresponding responses
 
-Edit `memory_manager.py` to add new contexts:
+### Add Memory Features
 
-```python
-_STORE: Dict[str, Dict[str, Any]] = {
-    "name": {},
-    "location": {},
-    "occupation": {},  # New context
-}
+Modify `memory_manager.pl` to store additional user context or preferences.
 
-DEFAULT_RULES = [
-    # ... existing rules ...
-    {
-        "pattern": "i work as *",
-        "actions": [
-            {"action": "remember", "context": "occupation", "key": "job"},
-            {"action": "reply", "template": "Got it, you work as {occupation.job}."}
-        ]
-    },
-]
-```
+## 🎓 Educational Focus
 
----
+This chatbot demonstrates:
 
-## 📖 Educational Concepts
+✔ **Logic programming** with Prolog predicates and unification  
+✔ **Modular design** with separate concern files  
+✔ **Pattern matching** for intent detection  
+✔ **Rule-based systems** for knowledge representation  
+✔ **Declarative programming** paradigm
 
-This project demonstrates:
+## ✔ License
 
-### Python Module System
-- Module imports and namespacing
-- Module-level vs. local scope
-- Variable shadowing
-- Cross-module state passing
-- `globals()` dictionary usage
-
-### Software Engineering
-- Separation of concerns
-- Single responsibility principle
-- Clean interfaces between modules
-- Explicit dependencies over implicit globals
-- Modular, testable architecture
-
-### Data Structures
-- Dictionaries for key-value storage
-- Lists for keyword collections
-- Tuples for multiple return values
-- Type hints for clarity
-
-### String Processing
-- Text normalization
-- Pattern matching with regex
-- Wildcard replacement
-- Case-insensitive comparison
-
----
-
-## ⚠️ Important Disclaimers
-
-### Educational Purpose Only
-This chatbot is designed for **educational purposes only**. It:
-- ❌ Does NOT provide real-time market data
-- ❌ Does NOT offer financial advice
-- ❌ Does NOT make buy/sell recommendations
-- ❌ Is NOT a substitute for professional financial guidance
-
-### Limitations
-- No persistent storage (memory clears on exit)
-- No real-time market data integration
-- No user authentication or multi-user support
-- Text-based CLI interface only
-
----
-
-## 🛠️ Technical Details
-
-### Requirements
-- **Python Version**: 3.7+
-- **Dependencies**: Standard library only
-  - `typing` - Type hints
-  - `re` - Regular expressions
-  - `sys` - System interface
-
-### Module-Level Constants
-
-Each module defines:
-- `MODULE_NAME` - Module identifier
-- `SCOPE_DEMO` - Scope demonstration string
-
-### Session State
-- Turn counter tracks conversation length
-- Memory persists during session
-- State passed explicitly via dictionaries
-
----
-
-## 📝 Documentation
-
-- **`README_MEMORY.md`** - Detailed memory system documentation
-- **`UML_and_Reflection_Modular_Chatbot.md`** - Architecture diagrams and design reflection
-
----
-
-## 🤝 Contributing
-
-To contribute or modify:
-
-1. Follow the existing modular structure
-2. Maintain clean separation between modules
-3. Add tests for new features
-4. Update documentation
-5. Keep responses educational and neutral
-
----
-
-## 📄 License
-
-This is an educational project. Use for learning purposes.
-
----
-
-## 👤 Author
-
-Created as a demonstration of modular Python programming, namespace management, and clean software architecture.
-
----
-
-## 🔄 Version History
-
-- **v1.0** - Initial release with 20+ intents, memory system, and modular architecture
-
----
-
-## 📞 Support
-
-For questions about the code structure or Python concepts demonstrated:
-- Review the inline code comments
-- Check the UML and reflection document
-- Examine individual module implementations
-
----
-
-**Remember**: This chatbot explains concepts. For actual investment decisions, consult a qualified financial advisor.
+This chatbot is intended for personal, educational, portfolio, or academic project use.
